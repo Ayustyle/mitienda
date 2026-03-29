@@ -3,7 +3,7 @@ export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Methods', 'GET');
 
   const { q, category, sort, price_min, price_max, shipping_cost } = req.query;
-  const SITE_ID = 'MLA'; // cambiá si no sos Argentina
+  const SITE_ID = 'MLA'; // MLA=Argentina | MLM=México | MLC=Chile | MLB=Brasil
 
   let url = `https://api.mercadolibre.com/sites/${SITE_ID}/search?limit=48`;
   if (category)      url += `&category=${category}`;
