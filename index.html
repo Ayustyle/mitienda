@@ -847,6 +847,15 @@ function fmt(p, cur = 'ARS') {
 
 // ── BUILD SEARCH URL ──
 function buildURL() {
+  let url = `/api/search?x=1`;
+  if (state.cat) url += `&category=${state.cat}`;
+  else           url += `&q=${encodeURIComponent(state.query)}`;
+  if (state.order)   url += `&sort=${state.order}`;
+  if (state.pMin)    url += `&price_min=${state.pMin}`;
+  if (state.pMax)    url += `&price_max=${state.pMax}`;
+  if (state.fShip)   url += `&shipping_cost=free`;
+  return url;
+}
   let url = `https://api.mercadolibre.com/sites/${SITE_ID}/search?limit=48`;
   if (state.cat) url += `&category=${state.cat}`;
   else           url += `&q=${encodeURIComponent(state.query)}`;
